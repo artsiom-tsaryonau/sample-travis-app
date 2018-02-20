@@ -1,1 +1,5 @@
 language: java
+before_script:
+  - echo "Executing before script section"
+after success:
+  - echo "Successfully built"
