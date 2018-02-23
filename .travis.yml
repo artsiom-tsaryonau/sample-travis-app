@@ -1,11 +1,24 @@
 language: java
+jdk: oraclejdk8
 notifications:
   email:
     on_failure: always
-    on_success: always
-    format: html
+    on_success: changed
   webhooks:
     urls:
       - https://webhooks.gitter.im/e/9b87e2767ae4a4f13c3f
     on_success: always
     on_failure: always
+stages:
+  - compile
+jobs:
+  include:
+    - script: bash sd-0.sh
+      jdk: oraclejdk8
+    - stage: stage2
+      jdk: oraclejdk8
+      script: bash sd-2.sh
+      if: branch = master
+    - stage: stage1
+      script: bash sd-1.sh
+      jdk: oraclejdk8
