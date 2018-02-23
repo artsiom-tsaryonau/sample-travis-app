@@ -6,19 +6,12 @@ notifications:
     on_success: changed
   webhooks:
     urls:
-      - https://webhooks.gitter.im/e/9b87e2767ae4a4f13c3f
+    - https://webhooks.gitter.im/e/9b87e2767ae4a4f13c3f
     on_success: always
     on_failure: always
-stages:
-  - compile
-jobs:
-  include:
-    - script: bash sd-0.sh
-      jdk: oraclejdk8
-    - stage: stage2
-      jdk: oraclejdk8
-      script: bash sd-2.sh
-      if: branch = master
-    - stage: stage1
-      script: bash sd-1.sh
-      jdk: oraclejdk8
+param:
+  field:
+    secure: p3fT2fvTcQomWZ098DGZNf4qZ1nTmciFuZjLqtRCY0dR1YgUjwEsMxEvuimWGFgwAKdTSuS8EvVTRLWUXxsmwVjqpASt4Spr2lIXkCNKS1dhmp4QG2w1C1b1Rxfzkni8uEWDvdNr6b00wzJSNXkVbYKUH8BJ11FWD1ooF76jiBBysSJCE5OBJmCfablf3EXj4Sa9/s+tOS9jsnTp3aBSsIiHrtM3YrhNvw074C3IbhDcOKuxnfOgcluiW/ZQCT8tfp1rSteP5PbmiQS/+vZoIsHhxKKDu931j+L4UbzIyXBZmUxlTReizOCAmvAt6nrLY9X33UGnOEyfYPZrD21qAt1c9hsgw4y+dk+MC6mA2q6m+kMYY9FuyI7GtvW7Yn0oFyMHOf5+auF1OWR7SIa7gn7bE3FvCCDAaPuBhBQhpmsYJa3xiGe0YwTlwwHuQyUOi7TwDbmIiDTmOfHzDSj0ubqD9DymW+bWrLg0EQPCCeLscDnp5JTgIqYxaNjPJ+KiQl2icujBGeCL0UJEhJoYKBfL2sAYB0+22fVb/j0gr4oHlCk0x89wMTE6rAUZKAuHAJTU7rDmRlWQLaspnEXe/CYMafsFF3D411CzMNQzypqeqOr36I9p7PLWgF2R81q2W0LtXzmppV8kR2GZ5lKgJkW4v8MxThrtBLYEK3rI7Lk=
+env:
+  global:
+    secure: YsLG89RPEb6cAvm5YepS7cSUM02kaWxcFvPRqeTX3x62+z+WlSbuwLLBLA59Tf2kiIr56xIPUKbIqb8+tGeWOhtBnFDiAXlqcTfns11oVPMLFC20+iPF+PeZgQhJFRhyqacxYDpPGNwCyUhHap0DolV5usRJoJRlF6XiFciOII7EvPK2FoTZo062yQEiopvnr4foHe1CHwIZgoZ3z9y0X9ds84YOgFBYTp9KRrqSjcH9T/t1R0ce8K68AhYjZULe/3XgbVN0zDvwFVYxKoEx5mXetAdk3/MM28y6XO+IxYReu+2AuP2MeEVB59LTNnI8zi7INcmvts79P6ya2/B/jDRibfiUnTGl4a5vwjw95BIn+Iju0dwvdx96zFFCWKbsbOFZKtp6GF3NYkrO37TtbqMRbWdjV7FA4Mv92JmAZzPFIlYwPLtZrZzVqG5KjL34Qld6ufn/z1W8l/bHiStymaWHO8frviTKJtlUj8qgT3QvXvXaZKdEyyJNd3JIF+JCYT4pp7d7oRYMWtu3FTdnbFY/rwt80vJCecFYlyuPiWxfvTAA2r80yOAIlQqk6GS3m01zAFOZpfRgjYJCu8726p3cGAdOPf8IqeVPdNIJtt4qTwXDvB+Gkne6GLRf19PtDI23U1ftKuTa+DP84cdGg7XnC/ENCZ56mvsNNR/xo+0=
