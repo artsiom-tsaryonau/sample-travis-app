@@ -1,7 +1,20 @@
 language: java
 jdk: oraclejdk8
+addons:
+  sonarcloud:
+    organization: 'artsiom-tsaryonau-github'
+    token:
+      secure: u9NOw9UYVkppri672OGg9olFIRHlvU+BDHysRv7Y4yehQlNX6za1MgGtYJVZ3NKQm8EOia3DgveJMN3kPmey/RRbQ3D0RfM0kVo0S1j5p2e2pmdDrVdyheAFHz33KzPjySp1rS/j0LQqDKdB5WFBZygsuc4Y9V8t4d6pnLHoxCXRr9LTkjbQFeckYUkgQjoGj945Lv8+aEHBip9IAvqjM5Q2PhO6yftqSA9WQs66O232wjzpi+TPlhWpbl2YWtOJIuwreFbUsZFuQTpgfUHT/JEmXaf1XElh1KA9+ahe5mv7PQL0eAsLhpQKp+NGIZ2s4Z7IaAqbw+eFENX+RHdLkT7FXl8UfJ8bAWONraLsA4GYZNAo7pErvGL1J+H2tDrlZvtIljLm1dCSolnqeAOlbbY2wvoec4hACco0M/K8jrUwtpQYTu/Lkf9CNEKRBdN1cACpYHQ6GYzORWTXrX0L3pBn7ZM+my/34xeWXCycg6NJ8xon5v8qfdz0eTw0bmshQeumnhGSzK9e44wA9JThILjI4Y7ibGUiglpm1jX97pHEy6S9uj0SPYV6rfT3SMUDDLBfH/du8H6LjB2LYugY+PneGztylOcKelQcTIEht24p77PHW9Ee7R1qXQInGmMaaNJ3py3ya7rPkIUI5llnWp8dMXfoU/HDvOZlkuOLUfo=
+script:
+- ./gradlew sonarqube
+cache:
+  directories:
+    - '$HOME/.m2/repository'
+    - '$HOME/.sonar/cache'
+    - '$HOME/.gradle'
+    - '.gradle'
 after_success:
-  - ./gradlew jacocoTestReport coveralls
+- "./gradlew jacocoTestReport coveralls"
 deploy:
   provider: heroku
   api_key:
