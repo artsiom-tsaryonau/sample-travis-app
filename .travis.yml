@@ -1,1 +1,11 @@
 language: java
+notifications:
+  email:
+    on_failure: always
+    on_success: always
+    format: html
+  webhooks:
+    urls:
+      - https://webhooks.gitter.im/e/9b87e2767ae4a4f13c3f
+    on_success: always
+    on_failure: always
