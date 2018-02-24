@@ -1,13 +1,22 @@
 language: java
 jdk: oraclejdk8
+os:
+  - linux
+  - osx
+env:
+  matrix:
+    - ENVIRONMENT=local
+    - ENVIRONMENT=global
+  global:
+    - BUILD_TYPE=test
+matrix:
+  exclude:
+    - os: osx
 addons:
   sonarcloud:
     organization: 'artsiom-tsaryonau-github'
     token:
       secure: u9NOw9UYVkppri672OGg9olFIRHlvU+BDHysRv7Y4yehQlNX6za1MgGtYJVZ3NKQm8EOia3DgveJMN3kPmey/RRbQ3D0RfM0kVo0S1j5p2e2pmdDrVdyheAFHz33KzPjySp1rS/j0LQqDKdB5WFBZygsuc4Y9V8t4d6pnLHoxCXRr9LTkjbQFeckYUkgQjoGj945Lv8+aEHBip9IAvqjM5Q2PhO6yftqSA9WQs66O232wjzpi+TPlhWpbl2YWtOJIuwreFbUsZFuQTpgfUHT/JEmXaf1XElh1KA9+ahe5mv7PQL0eAsLhpQKp+NGIZ2s4Z7IaAqbw+eFENX+RHdLkT7FXl8UfJ8bAWONraLsA4GYZNAo7pErvGL1J+H2tDrlZvtIljLm1dCSolnqeAOlbbY2wvoec4hACco0M/K8jrUwtpQYTu/Lkf9CNEKRBdN1cACpYHQ6GYzORWTXrX0L3pBn7ZM+my/34xeWXCycg6NJ8xon5v8qfdz0eTw0bmshQeumnhGSzK9e44wA9JThILjI4Y7ibGUiglpm1jX97pHEy6S9uj0SPYV6rfT3SMUDDLBfH/du8H6LjB2LYugY+PneGztylOcKelQcTIEht24p77PHW9Ee7R1qXQInGmMaaNJ3py3ya7rPkIUI5llnWp8dMXfoU/HDvOZlkuOLUfo=
-env:
-  global:
-    - ENVIRONMENT_1=global
 script:
 - ./gradlew sonarqube
 cache:
@@ -18,7 +27,7 @@ cache:
     - '.gradle'
 after_success:
 - "./gradlew jacocoTestReport coveralls"
-deploy:
-  provider: heroku
-  api_key:
-    secure: Wh0/vC2HpV2SbxBP037t3279t9aV1QkF9wSke7P4OKtDzoRyUIE//lsionZCAxmpHoV+onuE1waKJvmPBevX1iK4V4t3ANfuxcvpLoq/aWdXxagLXtuVm13gvi3/y6mzYmCiAqfgd7Ow53aFnwi4yWKEMXXVzMbRI5VqjUbFqFh2VBGuz8tx0PNqUEYuo+vDllj/yMQcCW0iPfMJyBAA2xudHNgqcvahTD42nTnQBqY4KKhmhhR0XV5P8dr34RSjR6OHms/aZ8JxlApzKQ/mM/GiZjgXGRETj9MG/Dj0ipQAcHKimf7u+gKs9bi+GscqcJ74nRPZJid5DlkVMyeT1Edm1UQS5CxKCtVkOGxOmHuQxk2ojbAfiXem4NC8gObb6jNndYSEkxpwD9xgldWui8N7OwvDU3d7GAML9252V6DhwMOkAxo21fKf8DtzvbWZ0Iu+9AUSncZa8gU9ZIhIZHI8rjbYg6fui2v9Fmsls3VtcKy4Qh+qKd7HDBfISCVqBL7eXmdmrSQCfSOSnVhMG3arVPCwwZGrG4ts9sdUv3gheeuARnsIG8XVpCpHhDVLTtldFBe78/pdqzIfIndlSQhB3s3OiK2Shq3MaZ5LHSZK8s5/e5DN1VylTakJPq1qKbEYQhfhbaihe/ZxG50+6eLuxjgycpzOITLOHPdStrQ=
+#deploy:
+#  provider: heroku
+#  api_key:
+#    secure: Wh0/vC2HpV2SbxBP037t3279t9aV1QkF9wSke7P4OKtDzoRyUIE//lsionZCAxmpHoV+onuE1waKJvmPBevX1iK4V4t3ANfuxcvpLoq/aWdXxagLXtuVm13gvi3/y6mzYmCiAqfgd7Ow53aFnwi4yWKEMXXVzMbRI5VqjUbFqFh2VBGuz8tx0PNqUEYuo+vDllj/yMQcCW0iPfMJyBAA2xudHNgqcvahTD42nTnQBqY4KKhmhhR0XV5P8dr34RSjR6OHms/aZ8JxlApzKQ/mM/GiZjgXGRETj9MG/Dj0ipQAcHKimf7u+gKs9bi+GscqcJ74nRPZJid5DlkVMyeT1Edm1UQS5CxKCtVkOGxOmHuQxk2ojbAfiXem4NC8gObb6jNndYSEkxpwD9xgldWui8N7OwvDU3d7GAML9252V6DhwMOkAxo21fKf8DtzvbWZ0Iu+9AUSncZa8gU9ZIhIZHI8rjbYg6fui2v9Fmsls3VtcKy4Qh+qKd7HDBfISCVqBL7eXmdmrSQCfSOSnVhMG3arVPCwwZGrG4ts9sdUv3gheeuARnsIG8XVpCpHhDVLTtldFBe78/pdqzIfIndlSQhB3s3OiK2Shq3MaZ5LHSZK8s5/e5DN1VylTakJPq1qKbEYQhfhbaihe/ZxG50+6eLuxjgycpzOITLOHPdStrQ=
