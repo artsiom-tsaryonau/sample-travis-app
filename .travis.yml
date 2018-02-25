@@ -1,17 +1,12 @@
 language: java
 jdk: oraclejdk8
-os:
-  - linux
-  - osx
+
 env:
-  matrix:
-    - ENVIRONMENT=local
-    - ENVIRONMENT=global
   global:
     - BUILD_TYPE=test
-matrix:
-  exclude:
-    - os: osx
+    - EXECUTABLE=false
+if: env(EXECUTABLE) = true
+
 addons:
   sonarcloud:
     organization: 'artsiom-tsaryonau-github'
